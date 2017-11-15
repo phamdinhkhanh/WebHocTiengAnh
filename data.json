@@ -1,0 +1,31 @@
+[
+    {
+        "_id": "5a0c770c0946a83a08317525",
+        "updatedAt": "2017-11-15T17:19:08.825Z",
+        "createdAt": "2017-11-15T17:19:08.825Z",
+        "title": "___ are you from?",
+        "points": 5,
+        "__v": 0,
+        "answers": [
+            "A. what",
+            "B. where",
+            "C. who",
+            "D. whom"
+        ]
+    },
+    {
+        "_id": "5a0c7de10bf5c43c706bf397",
+        "updatedAt": "2017-11-15T17:48:17.549Z",
+        "createdAt": "2017-11-15T17:48:17.549Z",
+        "title": "What ___ you do yesterday?",
+        "result": 0,
+        "points": 5,
+        "__v": 0,
+        "answers": [
+            "A. did",
+            "B. are",
+            "C. is",
+            "D. do"
+        ]
+    }
+]
