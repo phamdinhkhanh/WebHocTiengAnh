@@ -1,3 +1,4 @@
+/*1.Data question*/
 [
     {
         "_id": "5a0c770c0946a83a08317525",
@@ -27,5 +28,42 @@
             "C. is",
             "D. do"
         ]
+    }
+]
+
+
+
+/*2. Data user*/
+
+[
+    {
+        "_id": "5a0dd4c0254f2141bc6888e8",
+        "updatedAt": "2017-11-16T18:11:12.504Z",
+        "createdAt": "2017-11-16T18:11:12.504Z",
+        "username": "phamdinhkhanhdjkfalkfdj",
+        "password": "123",
+        "email": "phamdinhkhanh.tkt53.neu@gmail.com",
+        "__v": 0,
+        "point": 0
+    },
+    {
+        "_id": "5a0dd4e1254f2141bc6888ea",
+        "updatedAt": "2017-11-16T18:11:45.596Z",
+        "createdAt": "2017-11-16T18:11:45.596Z",
+        "username": "phamdinhkhanh",
+        "password": "123",
+        "email": "phamdinhkhanh.tkt53.neu1@gmail.com",
+        "__v": 0,
+        "point": 0
+    },
+    {
+        "_id": "5a0dd545254f2141bc6888eb",
+        "updatedAt": "2017-11-16T18:13:25.538Z",
+        "createdAt": "2017-11-16T18:13:25.538Z",
+        "username": "khanhpd2",
+        "password": "123",
+        "email": "phamdinhkhanh.tkt53@gmail.com",
+        "__v": 0,
+        "point": 0
     }
 ]
