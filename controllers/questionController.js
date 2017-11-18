@@ -20,6 +20,16 @@ getQuestionById = (id, callback) => {
   });
 }
 
+getRandomQuestion = (callback) => {
+  questionModel.aggregate({ $sample: { size: 1 } },(err,data) => {
+    if(err) {
+      callback(err);
+    } else {
+      callback(null,data);
+    }
+  })
+}
+
 createNewQuestion = (question, callback) => {
   let newQuestion = {
     title:question.title,
@@ -46,6 +56,7 @@ deleteAnQuestion = (id, callback) => {
 module.exports = {
   getAllQuestions,
   getQuestionById,
+  getRandomQuestion,
   createNewQuestion,
   deleteAnQuestion
 }

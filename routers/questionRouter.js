@@ -16,7 +16,7 @@ router.post('/',(req,res) => {
 
 //lay toan bo cau hoi
 router.get('/', (req, res) => {
-  questionController.getAllQuestions((err,data) => {
+  questionController.getRandomQuestion((err,data) => {
     if(err){
       res.status(500).send(err);
     } else {
