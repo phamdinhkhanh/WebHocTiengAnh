@@ -14,7 +14,7 @@ const getAllUser = (callback) => {
 }
 
 const getUserById = (id, callback) => {
-  userModel.findOne({_id:id},(err,data) => {
+  return userModel.findOne({_id:id},(err,data) => {
     if (err) {
       callback(err);
     } else {
@@ -43,19 +43,31 @@ const createUser = (user, callback) => {
   });
 }
 
-const answersCorrect = (id, questionId,callback) => {
-
-  userModel.find({_id:id}, (err,data) => {
+const updatePoint = (id,points,callback) => {
+  getUserById(id,(err,data) => {
     if (err) {
       console.log(err);
+      callback(err);
     } else {
-      console.log(data);
+      data.points += points;
+      data.save((err,updateData) => {
+        if(err){
+          console.log(err);
+          callback(err);
+        } else {
+          console.log(updateData);
+          callback(null,updateData);
+        }
+      });
     }
-  })
+  });
+
 }
+
 
 module.exports = {
   getAllUser,
   getUserById,
-  createUser
+  createUser,
+  updatePoint
 }
