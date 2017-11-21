@@ -1,10 +1,10 @@
-const userController = require('../controllers/userController');
+const questionController = require('../controllers/questionController');
 const express = require('express');
 const router = express.Router();
 
 //tao mot question moi
 router.post('/',(req,res) => {
-  userController.createUser(req.body,(err,data) => {
+  questionController.createNewQuestion(req.body,(err,data) => {
     if (err) {
       console.log(err);
       res.status(500).send(err);
@@ -16,8 +16,33 @@ router.post('/',(req,res) => {
 
 //lay toan bo cau hoi
 router.get('/', (req, res) => {
-  userController.getAllUser((err,data) => {
+  questionController.getRandomQuestion((err,data) => {
     if(err){
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(data);
+      // res.redirect(`/api/question/${data._id}`);
+    }
+  });
+})
+
+//delete cau hoi theo id
+router.get('/delete/:id',(req,res) => {
+  questionController.deleteAnQuestion(req.params.id,(err,data) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send(err);
+    } else {
+      res.status(200).send({message:"delete success!"})
+    }
+  })
+})
+
+//lay cau hoi theo id
+router.get('/:id',(req, res) => {
+  questionController.getQuestionById(req.params.id,(err,data) => {
+    if (err) {
+      console.log(err);
       res.status(500).send(err);
     } else {
       res.status(200).send(data);
@@ -26,13 +51,15 @@ router.get('/', (req, res) => {
 })
 
 
-//lay thong tin user
-router.get('/:id',(req, res) => {
-  userController.getUserById(req.params.id,(err,data) => {
+//update diem khi tra loi dung
+router.post('/:questionId/:userId',(req,res) => {
+  questionController.answersCorrect(req.params.questionId,req.params.userId, req.body.result, (err,data) =>{
     if (err) {
+      console.log("ban da sai roi");
       console.log(err);
       res.status(500).send(err);
     } else {
+      console.log("ban da dung roi");
       res.status(200).send(data);
     }
   });
