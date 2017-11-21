@@ -1,0 +1,10 @@
+{
+  "production":{
+    "connectionString":"",
+    "port":6969
+  },
+  "development":{
+    "connectionString":"",
+    "port":6969
+  }
+}
