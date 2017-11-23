@@ -21,8 +21,6 @@ router.get('/', (req, res) => {
       res.status(500).send(err);
     } else {
       res.status(200).send(data);
-      // res.redirect(`/api/question/${data._id}`);
-      res.render("question");
     }
   });
 })
@@ -46,21 +44,6 @@ router.get('/:id',(req, res) => {
       console.log(err);
       res.status(500).send(err);
     } else {
-      res.status(200).send(data);
-    }
-  });
-})
-
-
-//update diem khi tra loi dung
-router.post('/:questionId/:userId',(req,res) => {
-  questionController.answersCorrect(req.params.questionId,req.params.userId, req.body.result, (err,data) =>{
-    if (err) {
-      console.log("ban da sai roi");
-      console.log(err);
-      res.status(500).send(err);
-    } else {
-      console.log("ban da dung roi");
       res.status(200).send(data);
     }
   });
