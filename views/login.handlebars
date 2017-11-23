@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>English Quiz</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <script>
+    // initialize set up facebook js sdk 746659228868943
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId            : '746659228868943',
+          autoLogAppEvents : true,
+          xfbml            : true,
+          version          : 'v2.11'
+        });
+
+        FB.getLoginStatus((res) => {
+            if (res.status === 'connected') {
+              document.getElementById('status').innerHTML = 'We are connected!';
+              // document.getElementById('login').style.visibility='hidden';
+              // getCurrentUserInfo(res);
+            } else if(res.status === 'not_authorized') {
+              document.getElementById('status').innerHTML  = 'we are not logged in';
+            } else {
+              document.getElementById('status').innerHTML = 'you are not logged in FB';
+            }
+        })
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "https://connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+
+       function login() {
+         FB.login((res) => {
+           if (res.status === 'connected') {
+             document.getElementById('status').innerHTML = 'We are logged in facebook!';
+           } else if(res.status === 'not_authorized') {
+             document.getElementById('status').innerHTML  = 'we are not logged in';
+           } else {
+             document.getElementById('status').innerHTML = 'you are not logged in FB';
+           }
+         });
+       }
+
+      function getInfo() {
+        FB.api('/me','GET',{fields:'first_name,last_name,name,id'}, function(res) {
+          document.getElementById('status').innerHTML = "userid:" + res.id +";username:"+res.name;
+          var urlImage = document.getElementById("profileImage").setAttribute("src", "http://graph.facebook.com/" + res.id + "/picture?type=normal");
+        });
+      }
+     </script>
+
+      <div id ="status"></div>
+      <img id ="profileImage" src="" alt="">
+      <button onclick="getInfo()">Get Info</button>
+      <!-- <button onclick="login()" id="login">Login</button> -->
+      <div id="fb-root"></div>
+      <div onclick = "login()" class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true"></div>
+  </body>
+</html>

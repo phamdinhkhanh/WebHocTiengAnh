@@ -7,7 +7,7 @@ const questionRouter = require('./routers/questionRouter');
 const userRouter = require('./routers/userRouter');
 const config = require('./config.json');
 let app = express();
-
+// console.log("procees env:",process.env.PORT);
 let connectionString = process.env.PORT ?
 config.production.connectionString:
 config.development.connectionString;
@@ -18,15 +18,18 @@ config.development.port;
 
 app.engine('handlebars', exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
-
 app.use(bodyParser.urlencoded({ extended : true }) );
 app.use(bodyParser.json({ extended: true }) );
-app.use(express.static(__dirname + "/public"));
 
+
+app.get('/',(req,res) => {
+  res.render("login");
+})
 
 app.use('/api/question', questionRouter);
 app.use('/api/user',userRouter);
-console.log("connection string", connectionString);
+app.use(express.static(__dirname + "/public"));
+
 mongoose.connect(connectionString, (err) => {
   if (err) {
     console.log(err);
