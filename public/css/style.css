@@ -5,8 +5,16 @@ body .container{
 }
 
 .user_name{
-    padding: 10px;
-    margin: 0;
+  padding: 10px;
+  margin: 0;
+  border: 1px solid;
+  text-align: center;
+  font-weight: bold;
+  color: blue;
+}
+
+#image {
+  margin-bottom: 50px;
 }
 
 .user_point {
@@ -21,7 +29,7 @@ body .container{
 
 .text-center{
   text-align: center;
-  margin-top: 200px;
+  margin-top: 50px;
 }
 
 .fb-login-button {

@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
 const userModel = new Schema({
-  username:{type:String,required:true,unique:true},
+  userid:{type:String,required:true,unique:true},
+  username:{type:String,required:true},
   password:{type:String,required:true},
   email:{type:String, unique:true,
     validate: {
